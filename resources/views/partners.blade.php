@@ -5,13 +5,18 @@
 @section('hero_header')
 <div class="container-xxl py-5 bg-primary hero-header mb-5">
     <div class="container my-5 py-5 px-lg-5">
+        @if(Session::has('success'))
+                <div class="alert alert-success">
+                    {{ Session::get('success') }}
+                </div>
+            @endif
         <div class="row g-5 py-5">
             <div class="col-12 text-center">
                 <h1 class="text-white animated zoomIn">Partenaires</h1>
                 <hr class="bg-white mx-auto mt-0" style="width: 90px;">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb justify-content-center">
-                        <li class="breadcrumb-item"><a class="text-white" href="#">Acceuil</a></li>
+                        <li class="breadcrumb-item"><a class="text-white" href="{{route('home')}}">Acceuil</a></li>
                         <li class="breadcrumb-item text-white active" aria-current="page">partenaires</li>
                     </ol>
                 </nav>
@@ -128,50 +133,19 @@
 <div class="container-xxl bg-primary testimonial py-5 my-5 wow fadeInUp" data-wow-delay="0.1s">
     <div class="container py-5 px-lg-5">
         <div class="owl-carousel testimonial-carousel">
-            <div class="testimonial-item bg-transparent border rounded text-white p-4">
-                <i class="fa fa-quote-left fa-2x mb-3"></i>
-                <p>Il faut absolument que les usages applicatifs qui vont être développés par le Numérique puissent répondre au besoin des gens.</p>
-                <div class="d-flex align-items-center">
-                    <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-1.jpg" style="width: 50px; height: 50px;">
-                    <div class="ps-3">
-                        <h6 class="text-white mb-1">Eberande Kolongele</h6>
-                        <small>Ministre du numérique / RDC</small>
+            @foreach ($testimonies as $testimony)
+                <div class="testimonial-item bg-transparent border rounded text-white p-4">
+                    <i class="fa fa-quote-left fa-2x mb-3"></i>
+                    <p>{{strlen($testimony->content) <= 165 ? $testimony->content : substr($testimony->content,0,165).'...'}}</p>
+                    <div class="d-flex align-items-center">
+                        <img class="img-fluid flex-shrink-0 rounded-circle" src="{{$testimony->authorAvatar}}" style="width: 50px; height: 50px;">
+                        <div class="ps-3">
+                            <h6 class="text-white mb-1">{{$testimony->authorName}}</h6>
+                            <small>{{$testimony->authorTitle}}</small>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="testimonial-item bg-transparent border rounded text-white p-4">
-                <i class="fa fa-quote-left fa-2x mb-3"></i>
-                <p>Faire du numérique congolais un levier d'integration, de bonne gouvernance, de croissance économique, d'amélioration du climat des affaires et de progrès social.</p>
-                <div class="d-flex align-items-center">
-                    <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-2.jpg" style="width: 50px; height: 50px;">
-                    <div class="ps-3">
-                        <h6 class="text-white mb-1">Felix Antoine Tshisekedi</h6>
-                        <small>Président / RDC</small>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-item bg-transparent border rounded text-white p-4">
-                <i class="fa fa-quote-left fa-2x mb-3"></i>
-                <p>Les solutions numériques ne peuvent pas émerger du néant. Les dirigeants doivent intégrer la mise en oeuvre des technologies numériques dans un écosystème de l'innovation, et il n'y a pas de temps à perdre.</p>
-                <div class="d-flex align-items-center">
-                    <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-3.jpg" style="width: 50px; height: 50px;">
-                    <div class="ps-3">
-                        <h6 class="text-white mb-1">Cristina Duarte</h6>
-                        <small>Séc. Gén. Adj. des nations Unies</small>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-item bg-transparent border rounded text-white p-4">
-                <i class="fa fa-quote-left fa-2x mb-3"></i>
-                <p>En absence d'infrastructures traditionnelles, le numérique permet de faire des sauts qualitatifs, dans le domaines de l'énergie par exemple, sans avoir à réaliser un investissement de départ conséquen. </p>
-                <div class="d-flex align-items-center">
-                    <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-4.jpg" style="width: 50px; height: 50px;">
-                    <div class="ps-3">
-                        <h6 class="text-white mb-1">Rebecca Enonchong</h6>
-                        <small>PDG D'Apps Tech</small>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>

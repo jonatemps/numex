@@ -5,7 +5,9 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\PostController;
+use App\Models\Newsletter;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,11 +21,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class,'render']);
+Route::get('/', [HomeController::class,'render'])->name('home');
 
-Route::get('/about', function () {
-    return view('about');
-});
+Route::get('/about', [HomeController::class,'about'])->name('about');
 
 
 Route::get('/events', [EventController::class,'list']);
@@ -42,9 +42,13 @@ Route::get('/posts',[PostController::class,'list']);
 
 Route::get('/post/{post}', [PostController::class,'show'])->name('article');
 
-Route::post('/newletter', function (Request $request) {
-    dd($request);
-});
+Route::post('/newletter', function (Request $request, Newsletter $newsletter) {
+
+    $newsletter->mail = $request->input('email');
+    $newsletter->save();
+
+    return back()->with('success', 'Merci de vous être enregistré dans notre newsletter !');
+})->name('newsletter');
 
 Route::post('/send/mail', function (Request $request) {
     dd($request);
@@ -57,3 +61,8 @@ Route::post('/send/comment', function (Request $request) {
 
 Route::get('/contact-us', [ContactController::class, 'index']);
 Route::post('/contact-us', [ContactController::class, 'save'])->name('contact.store');
+
+
+Route::get('/link', function () {
+    Artisan::call('storage:link');
+});

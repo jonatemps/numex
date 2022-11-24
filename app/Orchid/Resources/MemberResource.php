@@ -50,12 +50,10 @@ class MemberResource extends Resource
                 Input::make('facebook')
                     ->title('Facebook:')
                     ->placeholder('Entrez l\'ID Facebook du membre')
-                    ->required()
                     ->help('S\'il vous plaît, saisisez l\'ID du membre'),
                Input::make('instagram')
                     ->title('Instagram:')
                     ->placeholder('Entrez l\'ID Instagram du membre')
-                    ->required()
                     ->help('S\'il vous plaît, saisisez l\'ID du membre'),
             ]),
 
@@ -63,12 +61,10 @@ class MemberResource extends Resource
                 Input::make('twitter')
                     ->title('Twitter:')
                     ->placeholder('Entrez l\'ID Twitter du membre')
-                    ->required()
                     ->help('S\'il vous plaît, saisisez l\'ID du membre'),
                Input::make('linkedin')
                     ->title('LinkedIn:')
                     ->placeholder('Entrez l\'ID LinkedIn du membre')
-                    ->required()
                     ->help('S\'il vous plaît, saisisez l\'ID LinkedIn du membre'),
             ]),
         ];

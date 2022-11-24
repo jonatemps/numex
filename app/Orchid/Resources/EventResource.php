@@ -8,6 +8,7 @@ use Orchid\Screen\Fields\DateTimer;
 use Orchid\Screen\Fields\Group;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\TextArea;
+use Orchid\Screen\Fields\Upload;
 use Orchid\Screen\TD;
 
 class EventResource extends Resource
@@ -56,6 +57,10 @@ class EventResource extends Resource
                     ->title('image')
                     ->width(500)
                     ->height(300)
+                    ->horizontal(),
+
+                    Upload::make('files')
+                    ->title('Upload files')
                     ->horizontal(),
             ]),
 

@@ -16,6 +16,7 @@ class PostController extends Controller
     public function show(Post $post){
 
         // dd($post);
-        return view('post',['post' => $post]);
+        $posts = Post::limit(20)->orderBy('created_at','desc')->get();
+        return view('post',['post' => $post,'posts' => $posts]);
     }
 }

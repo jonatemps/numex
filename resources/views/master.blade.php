@@ -4,13 +4,14 @@
 
 <head>
     <meta charset="utf-8">
-    <title>SEO Master - SEO Agency Website Template</title>
+    @yield('title')
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="{{asset('img/icon.jpg')}}" rel="icon">
+    {{-- <link href="{{asset('img/icon.jpg')}}" rel="icon"> --}}
+    <link rel="icon" type="image/x-icon" href="{{asset('img/icon.jpg')}}">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -61,9 +62,9 @@
                         <a href="{{url('/')}}" class="nav-item nav-link {{$active1 ?? ''}}">Acceuil</a>
                         <a href="{{url('/about')}}" class="nav-item nav-link {{$active2 ?? ''}}">A propos</a>
                         {{-- <a href="service.html" class="nav-item nav-link {{$active3 ?? ''}}">Services</a> --}}
-                        <a href="{{url('/events')}}" class="nav-item nav-link {{$active4 ?? ''}}">Evénéments</a>
+                        {{-- <a href="{{url('/events')}}" class="nav-item nav-link {{$active4 ?? ''}}">Evénéments</a> --}}
                         <a href="{{url('/partners')}}" class="nav-item nav-link {{$active5 ?? ''}}">Partenaires</a>
-                        <a href="{{url('/project')}}" class="nav-item nav-link {{$active6 ?? ''}}">Projects</a>
+                        <a href="{{url('/project')}}" class="nav-item nav-link {{$active6 ?? ''}}">Projets</a>
                         <a href="{{url('/posts')}}" class="nav-item nav-link {{$active7 ?? ''}}">Blog</a>
 
                         {{-- <div class="nav-item dropdown">
@@ -142,13 +143,19 @@
                         <h5 class="text-white mb-4">Entrer en contact</h5>
                         {{-- <p><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p> --}}
                         <p><i class="fa fa-phone-alt me-3"></i>+243 822 655 136</p>
-                        <p><i class="fa fa-envelope me-3"></i>info@numex.org</p>
+                        <p><i class="fa fa-envelope me-3"></i>info@numexinternational.com</p>
                         <div class="d-flex pt-2">
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-instagram"></i></a>
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-outline-light btn-social" href="https://twitter.com/numexdrc?t=hC2oSS7biFZT_8a2DgupOw&s=09" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light btn-social" href="https://m.facebook.com/numexinternational/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            {{-- <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a> --}}
+                            <a class="btn btn-outline-light btn-social"href="http://instagram.com/numexdrc?utm_source=qr" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a class="btn btn-outline-light btn-social" href="https://www.linkedin.com/company/numex-rdc/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+
+
+                    <a class="btn btn-outline-primary btn-square me-3" href="https://m.facebook.com/numexinternational/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-primary btn-square me-3" href="https://twitter.com/numexdrc?t=hC2oSS7biFZT_8a2DgupOw&s=09" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-primary btn-square me-3" href="http://instagram.com/numexdrc?utm_source=qr" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-outline-primary btn-square" href="https://www.linkedin.com/company/numex-rdc/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-3">
@@ -156,9 +163,9 @@
                         <a class="btn btn-link" href="/about">A propos</a>
                         <a class="btn btn-link" href="/contact">Contact</a>
                         <a class="btn btn-link" href="/partners">Partenaires</a>
-                        <a class="btn btn-link" href="/bog">Blog</a>
+                        <a class="btn btn-link" href="{{url('/posts')}}">Blog</a>
                     </div>
-                    <div class="col-md-6 col-lg-3">
+                    {{-- <div class="col-md-6 col-lg-3">
                         <h5 class="text-white mb-4">Gallery des projets</h5>
                         <div class="row g-2">
                             <div class="col-4">
@@ -180,12 +187,12 @@
                                 <img class="img-fluid" src="img/portfolio-6.jpg" alt="Image">
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="col-md-6 col-lg-3">
                         <h5 class="text-white mb-4">Newsletter</h5>
-                        <p>Inscrivez-vous à la newsletter pour ne rien manquer quand à la marche évolutive de numex !</p>
+                        <p>Inscrivez-vous à notre newsletter pour ne rien manquer quand à la marche évolutive de numex !</p>
                         <div class="position-relative w-100 mt-3">
-                            <form action="/newletter" method="post">
+                            <form action="{{url("/newletter")}}" method="post">
                                 @csrf
                                 <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" name="email" type="text" placeholder="Votre Email" style="height: 48px;">
                                 <button type="submit" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i class="fa fa-paper-plane text-primary fs-4"></i></button>
@@ -198,18 +205,18 @@
                 <div class="copyright">
                     <div class="row">
                         <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                            &copy; <a class="border-bottom" href="mailto:mupene7@gmail.com">Numex</a>, All Right Reserved.
+                            &copy; <a class="border-bottom" href="mailto:bonjour@numexinternational.com">Numex</a>, All Right Reserved.
 
-							<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-							Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
-                            <br>Propulsé par: <a class="border-bottom" href="mailto:mupene7@gmail.com" target="_blank">Jonatemps Mupene</a>
+                            <br>Propulsé par: <a class="border-bottom" href="mailto:mupene7@gmail.com" target="_blank">Jonatemps Mupene</a> <br>
+                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+							{{-- Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> --}}
                             <!-- <br>Distributed By: <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a> -->
                         </div>
                         <div class="col-md-6 text-center text-md-end">
                             <div class="footer-menu">
-                                <a href="/">Accueil</a>
-                                <a href="/about">A propos</a>
-                                <a href="/bog">bog</a>
+                                <a href="{{url("/")}}">Accueil</a>
+                                <a href="{{url('/partners')}}">A propos</a>
+                                <a href="{{url("/bog")}}">bog</a>
                                 {{-- <a href="">FQAs</a> --}}
                             </div>
                         </div>

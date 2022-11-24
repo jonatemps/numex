@@ -1,16 +1,23 @@
 @extends('master')
-
+@section('title')
+    <title>Numex - Page d'acceuil</title>
+@endsection
 <h6 hidden>{{$active1='active'}}</h6>
 
 @section('hero_header')
 
 <div class="container-xxl py-5 bg-primary hero-header mb-5">
     <div class="container my-5 py-5 px-lg-5">
+        @if(Session::has('success'))
+                <div class="alert alert-success">
+                    {{ Session::get('success') }}
+                </div>
+            @endif
         <div class="row g-5 py-5">
             <div class="col-lg-6 text-center text-lg-start">
-                <h1 class="text-white mb-4 animated zoomIn">Façonnons le future grâce au numérique !</h1>
+                <h1 class="text-white mb-4 animated zoomIn">Façonnons le futur grâce au numérique !</h1>
                 {{-- <p class="text-white pb-3 animated zoomIn">Que l'humanité considère le vrai interêt du numérique dans la vie de tous les jours et les bonnes pratiques qui vont avec. Tirons profit du numérique en le mettant à sa place.</p> --}}
-                <p class="text-white pb-3 animated zoomIn">Utilisé de la bonne façon le numérique est un facteur de développement social et économique. Grace au numérique déclenchez votre processus d'intégration.</p>
+                <p class="text-white pb-3 animated zoomIn">Utiliser de la bonne façon le numérique est un facteur de développement social et économique. Grâce au numérique déclenchez votre processus d'intégration.</p>
                 <a href="/about" class="btn btn-light py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft">A propos de nous</a>
                 <a href="/contact" class="btn btn-outline-light py-sm-3 px-sm-5 rounded-pill animated slideInRight">Nous contacter</a>
             </div>
@@ -36,7 +43,7 @@
                 </div>
                 {{-- <p class="mb-4">NUMEX
                     initie plusieurs projets sur le continent africain à travers un plan de développement des compétences numériques (nouvelles technologies)</p> --}}
-                    <p class="mb-4">Numex est une plateforme qui unitie plusieurs projects sur les nouvelles technologies. Sa plateforme constitue un lieu privilégié d'échanges d'expéreinces, d'information, d'apprentissage et de la promotion du numérique.</p>
+                    <p class="mb-4">Numex est une plateforme qui initie plusieurs projets sur les nouvelles technologies. La plateforme constitue un lieu privilégié d'échanges d'expériences, d'informations, d'apprentissages ainsi que de la promotion du numérique.</p>
                 <div class="row g-3">
                     <div class="col-sm-6">
                         <h6 class="mb-3"><i class="fa fa-check text-primary me-2"></i>Sens de l'innovation</h6>
@@ -44,15 +51,15 @@
                     </div>
                     <div class="col-sm-6">
                         <h6 class="mb-3"><i class="fa fa-check text-primary me-2"></i>Disponibilité 24/7</h6>
-                        <h6 class="mb-0"><i class="fa fa-check text-primary me-2"></i>Excelence</h6>
+                        <h6 class="mb-0"><i class="fa fa-check text-primary me-2"></i>Excellence</h6>
                     </div>
                 </div>
                 <div class="d-flex align-items-center mt-4">
-                    <a class="btn btn-primary rounded-pill px-4 me-3" href="about.html">Voir plus</a>
-                    <a class="btn btn-outline-primary btn-square me-3" href=""><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-primary btn-square me-3" href=""><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-outline-primary btn-square me-3" href=""><i class="fab fa-instagram"></i></a>
-                    <a class="btn btn-outline-primary btn-square" href=""><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-primary rounded-pill px-4 me-3" href="/about">Voir plus</a>
+                    <a class="btn btn-outline-primary btn-square me-3" href="https://m.facebook.com/numexinternational/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-primary btn-square me-3" href="https://twitter.com/numexdrc?t=hC2oSS7biFZT_8a2DgupOw&s=09" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-primary btn-square me-3" href="http://instagram.com/numexdrc?utm_source=qr" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-outline-primary btn-square" href="https://www.linkedin.com/company/numex-rdc/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -70,7 +77,7 @@
     <div class="container px-lg-5">
         <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
             <h6 class="position-relative d-inline text-primary ps-4">Nos Services</h6>
-            <h2 class="mt-2">Nos axes d'activité</h2>
+            <h2 class="mt-2">Nos axes d'activités</h2>
         </div>
         <div class="row g-4">
             <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.1s">
@@ -79,7 +86,7 @@
                         <i class="fa fa-users fa-2x"></i>
                     </div>
                     <h5 class="mb-3">Forum</h5>
-                    <p>Il s'agit d'un haut cadre d'échange pour les acteurs du numérique africains et internationnaux.</p>
+                    <p>Il s'agit d'un haut cadre d'échange pour les acteurs du numérique africains et internationaux.</p>
                     <!-- <a class="btn px-3 mt-auto mx-auto" href="">Read More</a> -->
                 </div>
             </div>
@@ -89,7 +96,7 @@
                         <i class="fa fa-tag fa-2x"></i>
                     </div>
                     <h5 class="mb-3">Formation</h5>
-                    <p>Numex propose une panoplie des formations afin de repondre aux besoins de compétences numériques.</p>
+                    <p>Numex propose une panoplie des formations afin de répondre aux besoins des compétences numérique.</p>
                     <!-- <a class="btn px-3 mt-auto mx-auto" href="">Read More</a> -->
                 </div>
             </div>
@@ -109,7 +116,7 @@
                         <i class="fa fa-eye fa-2x"></i>
                     </div>
                     <h5 class="mb-3">Recommandation</h5>
-                    <p>Numex se veux être une passerelle entre vous et le numerique par son système de recommandation.</p>
+                    <p>Numex se veut être une passerelle entre vous et le numérique par son système de recommandation.</p>
                     <!-- <a class="btn px-3 mt-auto mx-auto" href="">Read More</a> -->
                 </div>
             </div>
@@ -119,7 +126,7 @@
                         <i class="fa fa-briefcase fa-2x"></i>
                     </div>
                     <h5 class="mb-3">After work numérique</h5>
-                    <p>Un cadre d'échange qui favorise le réseautage entre les passionés du numérique.</p>
+                    <p>Un cadre d'échanges qui favorise le réseautage entre les passionés du numérique.</p>
                     <!-- <a class="btn px-3 mt-auto mx-auto" href="">Read More</a> -->
                 </div>
             </div>
@@ -129,7 +136,7 @@
                         <i class="fa fa-book fa-2x"></i>
                     </div>
                     <h5 class="mb-3">Publication</h5>
-                    <p>Publication des guides d'utilsation, magasizes et bonnes pratiques.</p>
+                    <p>Publication des guides d'utilsation, magasines et bonnes pratiques.</p>
                     <!-- <a class="btn px-3 mt-auto mx-auto" href="">Read More</a> -->
                 </div>
             </div>
@@ -147,7 +154,7 @@
             @foreach ($testimonies as $testimony)
                 <div class="testimonial-item bg-transparent border rounded text-white p-4">
                     <i class="fa fa-quote-left fa-2x mb-3"></i>
-                    <p>{{$testimony->content}}</p>
+                    <p>{{strlen($testimony->content) <= 165 ? $testimony->content : substr($testimony->content,0,165).'...'}}</p>
                     <div class="d-flex align-items-center">
                         <img class="img-fluid flex-shrink-0 rounded-circle" src="{{$testimony->authorAvatar}}" style="width: 50px; height: 50px;">
                         <div class="ps-3">
@@ -179,10 +186,10 @@
                     <div class="team-item">
                         <div class="d-flex">
                             <div class="flex-shrink-0 d-flex flex-column align-items-center mt-4 pt-5" style="width: 75px;">
-                                <a class="btn btn-square text-primary bg-white my-1" href="{{$member->facebook}}"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square text-primary bg-white my-1" href="{{$member->twitter}}"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square text-primary bg-white my-1" href="{{$member->instagram}}"><i class="fab fa-instagram"></i></a>
-                                <a class="btn btn-square text-primary bg-white my-1" href="{{$member->linkedin}}"><i class="fab fa-linkedin-in"></i></a>
+                                <a class="btn btn-square text-primary bg-white my-1" href="{{$member->facebook ?? ''}}"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-square text-primary bg-white my-1" href="{{$member->twitter ?? ''}}"><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-square text-primary bg-white my-1" href="{{$member->instagram ?? ''}}"><i class="fab fa-instagram"></i></a>
+                                <a class="btn btn-square text-primary bg-white my-1" href="{{$member->linkedin ?? ''}}"><i class="fab fa-linkedin-in"></i></a>
                             </div>
                             <img class="img-fluid rounded w-100" src="{{asset($member->photo)}}" alt="{{$member->name}}">
                         </div>

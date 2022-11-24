@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Member;
+use App\Models\Newsletter;
 use App\Models\Partner;
 use App\Models\Testimony;
 use Illuminate\Http\Request;
@@ -17,4 +18,15 @@ class HomeController extends Controller
 
         return view('home',['testimonies' => $testimonies,'partners' => $partners,'members' => $members]);
     }
+
+    public function about(){
+
+        $members = Member::all();
+
+        return view('about',['members' => $members]);
+    }
+
+
+
+    
 }

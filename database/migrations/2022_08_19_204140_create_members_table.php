@@ -18,10 +18,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('fonction');
             $table->text('photo');
-            $table->string('facebook');
-            $table->string('instagram');
-            $table->string('twitter');
-            $table->string('linkedin');
+            $table->string('facebook')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('linkedin')->nullable();
             $table->timestamps();
         });
     }

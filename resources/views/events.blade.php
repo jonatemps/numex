@@ -10,6 +10,11 @@
 @section('hero_header')
 <div class="container-xxl py-5 bg-primary hero-header mb-5">
     <div class="container my-5 py-5 px-lg-5">
+        @if(Session::has('success'))
+                <div class="alert alert-success">
+                    {{ Session::get('success') }}
+                </div>
+            @endif
         <div class="row g-5 py-5">
             <div class="col-12 text-center">
                 <h1 class="text-white animated zoomIn">Evénements</h1>

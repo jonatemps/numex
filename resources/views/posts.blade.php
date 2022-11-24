@@ -11,13 +11,18 @@
 @section('hero_header')
 <div class="container-xxl py-5 bg-primary hero-header mb-5">
     <div class="container my-5 py-5 px-lg-5">
+        @if(Session::has('success'))
+                <div class="alert alert-success">
+                    {{ Session::get('success') }}
+                </div>
+            @endif
         <div class="row g-5 py-5">
             <div class="col-12 text-center">
                 <h1 class="text-white animated zoomIn">Articles</h1>
                 <hr class="bg-white mx-auto mt-0" style="width: 90px;">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb justify-content-center">
-                        <li class="breadcrumb-item"><a class="text-white" href="#">Acceuil</a></li>
+                        <li class="breadcrumb-item"><a class="text-white" href="{{route('home')}}">Acceuil</a></li>
                         <li class="breadcrumb-item text-white active" aria-current="page">Articles</li>
                     </ol>
                 </nav>
@@ -44,12 +49,12 @@
                         <h2><strong>Latest</strong> Post</h2>
                     </div> --}}
                     <div class="body">
-                        <h3 class="m-t-0 m-b-5"><a href="blog-details.html">{{$post->title}}</a></h3>
+                        <h3 class="m-t-0 m-b-5"><a href="{{route('article',$post->id)}}">{{$post->title}}</a></h3>
                         <ul class="meta">
-                            <li><a href="javascript:void(0);"><i class="zmdi zmdi-account col-blue"></i>Posted By: {{$post->user->name}}</a></li>
+                            <li><a href="javascript:void(0);"><i class="zmdi zmdi-account col-blue"></i>Posté Par: {{$post->user->name}}</a></li>
                             <li><a href="javascript:void(0);"><i class="zmdi zmdi-label col-amber"></i>Technology</a></li>
-                            <li><a href="javascript:void(0);"><i class="zmdi zmdi-comment-text col-blue"></i>Comments: 3</a></li>
-                            <li><a href="javascript:void(0);"><i class="zmdi zmdi-calendar col-blue"></i>Il y'a deux heurs</a></li>
+                            {{-- <li><a href="javascript:void(0);"><i class="zmdi zmdi-comment-text col-blue"></i>Comments: 3</a></li> --}}
+                            <li><a href="javascript:void(0);"><i class="zmdi zmdi-calendar col-blue"></i>{{$post->formatDate()}}</a></li>
                         </ul>
                     </div>
                     <div class="body">
@@ -62,7 +67,7 @@
                                 <a href="{{$post->linkedin}}" class="btn btn-primary btn-icon btn-icon-mini btn-round"><i class="zmdi zmdi-linkedin"></i></a>
                             </div>
                         </div>
-                        <p>{{$post->subtitle}}</p>
+                        <p>{{strlen($post->subtitle) < 120 ? $post->subtitle : substr($post->subtitle,0,120).'...'}}</p>
                         <a href="{{route('article',$post->id)}}" title="read more" class="btn btn-round btn-primary">Lire Plus</a>
                         {{-- <a class="btn px-3 mt-auto mx-auto" href="">Read More</a> --}}
                     </div>
